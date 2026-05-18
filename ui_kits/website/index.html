@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <title>Praktijk van Marijk — website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../colors_and_type.css"/>
+  <style>body { font-family: 'DM Sans', system-ui, sans-serif; }</style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    body { margin: 0; }
+
+    /* Over-pagina — hero */
+    .over-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 360px);
+      gap: 56px;
+      padding: 56px 48px 48px;
+      align-items: start;
+    }
+    .over-hero__text > h1,
+    .over-hero__text > p { max-width: 60ch; }
+    .over-hero__portret { width: 100%; }
+
+    @media (max-width: 960px) {
+      .over-hero {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 300px);
+        gap: 40px;
+        padding: 48px 32px 40px;
+      }
+    }
+    @media (max-width: 720px) {
+      .over-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 24px 32px;
+      }
+      .over-hero__portret {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <template id="__bundler_thumbnail" data-bg-color="#faf8f4">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#faf8f4"></rect>
+      <rect x="380" y="392" width="6" height="120" fill="#89221D"></rect>
+      <text x="600" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-style="italic" fill="#2e1f0e">Praktijk</text>
+      <text x="600" y="498" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#5a4a38">van Marijk</text>
+    </svg>
+  </template>
+  <div id="root"></div>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="Primitives.jsx"></script>
+  <script type="text/babel" src="Chrome.jsx"></script>
+  <script type="text/babel" src="Home.jsx"></script>
+  <script type="text/babel" src="Over.jsx"></script>
+  <script type="text/babel" src="Professionals.jsx"></script>
+  <script type="text/babel" src="Werkwijze.jsx"></script>
+  <script type="text/babel" src="Ervaringen.jsx"></script>
+  <script type="text/babel" src="Contact.jsx"></script>
+  <script type="text/babel" src="App.jsx"></script>
+</body>
+</html>

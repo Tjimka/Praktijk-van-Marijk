@@ -1,0 +1,173 @@
+/* =========================================================
+   Praktijk van Marijk — Design Tokens
+   Kalm, geaard, zakelijk. Minimalistisch. Veel witruimte.
+   Gebaseerd op de aangeleverde brandingpagina.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  /* ---------- Color: base ---------- */
+  --bg:           #FAF8F4;   /* gebroken wit / bone achtergrond */
+  --bg-sunken:    #F0EBE0;   /* iets dieper, hover rows / alternerende secties */
+  --beige:        #E8DFD2;   /* warm beige — hero image achtergrond */
+  --surface:      #FFFFFF;   /* kaart/contrast */
+  --surface-dark: #2E1F0E;   /* donkere quote-strip / contrastvlak */
+  --line:         #E0D8CC;   /* dunne scheidingslijn (0.5px-visueel) */
+  --line-strong:  #C8BDA9;
+
+  /* ---------- Color: text ---------- */
+  --fg1:          #2E1F0E;   /* primair: diep warmbruin, bijna koffiezwart */
+  --fg2:          #5A4A38;   /* secundair, body-alt */
+  --fg3:          #8A7A68;   /* tertiair / captions */
+  --fg-on-dark:   #F0E8DE;
+  --fg-on-accent: #FAF8F4;
+
+  /* ---------- Color: accents ---------- */
+  /* Primair: bordeaux/oxblood — de enige kleur voor knoppen en actieve nav */
+  --accent:         #89221D;
+  --accent-hover:   #6F1A17;
+  --accent-press:   #5A1512;
+  --accent-soft:    #F1E0DE;
+
+  /* Secundair: olijf — ondersteunend accent, categorisatie */
+  --accent-2:       #A6AC3E;
+  --accent-2-hover: #8E9434;
+  --accent-2-soft:  #F0F2E4;   /* olijf licht — zachte card-achtergrond */
+
+  /* Tertiair: oker/amber — accentlijnen, cijfers, detail (spaarzaam) */
+  --accent-3:       #CF872D;
+  --accent-3-hover: #B0721F;
+  --accent-3-soft:  #F7EBD9;
+
+  /* ---------- Color: semantic ---------- */
+  --focus-ring:   rgba(137, 34, 29, 0.35);
+
+  /* ---------- Type: families ---------- */
+  /* Lora — accentfont voor titels, hero-h1, card-titles, quotes. */
+  /* DM Sans — hoofdfont voor body, labels, nav, knoppen, eyebrows. */
+  --font-display: 'Lora', 'Iowan Old Style', 'Times New Roman', Georgia, serif;
+  --font-body:    'DM Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  --font-serif:   'Lora', Georgia, serif; /* quotemark-glyph */
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ---------- Type: scale (referentiepagina leunt relatief licht en klein) ---------- */
+  --text-display: 44px;
+  --text-h1:      30px;   /* hero h1 zoals referentie */
+  --text-h2:      22px;
+  --text-h3:      17px;
+  --text-body-l:  17px;
+  --text-body:    15px;
+  --text-small:   13px;
+  --text-xs:      12px;
+  --text-eyebrow: 11px;
+
+  --lh-tight:     1.25;
+  --lh-snug:      1.4;
+  --lh-body:      1.7;
+  --lh-relaxed:   1.75;
+
+  /* Lora op weight 500 voor titels; 400 italic voor quotes. */
+  --weight-heading: 500;
+  --weight-body:    400;
+  --weight-medium:  500;
+  --weight-strong:  600;
+
+  /* ---------- Spacing (8px basis) ---------- */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 4px;   /* knoppen */
+  --radius-md: 6px;   /* kaarten in referentie */
+  --radius-lg: 12px;
+
+  /* ---------- Border weights ---------- */
+  --border:        0.5px solid var(--line);
+  --border-accent: 3px solid var(--accent-3);
+
+  /* ---------- Shadow (terughoudend) ---------- */
+  --shadow-sm: 0 1px 2px rgba(46, 31, 14, 0.05);
+  --shadow-md: 0 4px 16px rgba(46, 31, 14, 0.06);
+
+  /* ---------- Layout ---------- */
+  --container:    1200px;
+  --readline:      680px;
+
+  /* ---------- Motion ---------- */
+  --ease:  cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-1: 200ms;
+  --dur-2: 400ms;
+}
+
+/* ========================================================= */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body { background: var(--bg); color: var(--fg1); font-family: var(--font-body); font-size: var(--text-body); line-height: var(--lh-body); margin: 0; }
+
+/* ---------- Semantic typography ---------- */
+.display, h1.display { font-family: var(--font-display); font-size: var(--text-display); font-weight: var(--weight-heading); line-height: var(--lh-tight); letter-spacing: 0; color: var(--fg1); margin: 0; }
+h1, .h1 { font-family: var(--font-display); font-size: var(--text-h1); font-weight: var(--weight-heading); line-height: 1.35; letter-spacing: 0; color: var(--fg1); margin: 0; }
+h2, .h2 { font-family: var(--font-display); font-size: var(--text-h2); font-weight: var(--weight-heading); line-height: 1.35; color: var(--fg1); margin: 0; }
+h3, .h3 { font-family: var(--font-display); font-size: var(--text-h3); font-weight: var(--weight-medium); line-height: var(--lh-snug); color: var(--fg1); margin: 0; }
+p, .body { font-size: var(--text-body); line-height: var(--lh-body); color: var(--fg2); margin: 0; }
+.body-l { font-size: var(--text-body-l); line-height: var(--lh-relaxed); color: var(--fg2); }
+.small { font-size: var(--text-small); line-height: 1.55; color: var(--fg2); }
+.xs    { font-size: var(--text-xs); line-height: 1.5; color: var(--fg3); }
+.eyebrow { font-family: var(--font-body); font-size: var(--text-eyebrow); font-weight: var(--weight-medium); line-height: 1.2; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+a { color: var(--accent); text-decoration: none; transition: color var(--dur-1) var(--ease); }
+a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 4px; }
+
+hr { border: 0; border-top: 0.5px solid var(--line); margin: var(--space-7) 0; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-body); font-size: var(--text-small); font-weight: var(--weight-medium); line-height: 1; padding: 10px 22px; border-radius: var(--radius-sm); border: 1px solid transparent; cursor: pointer; letter-spacing: 0.03em; transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease); text-decoration: none; }
+.btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+.btn-primary { background: var(--accent); color: var(--fg-on-accent); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--fg-on-accent); text-decoration: none; }
+.btn-primary:active { background: var(--accent-press); }
+
+.btn-secondary { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-secondary:hover { background: var(--accent-soft); color: var(--accent-hover); text-decoration: none; }
+
+.btn-tertiary { background: transparent; color: var(--accent); padding: 10px 0; }
+.btn-tertiary:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 4px; }
+
+.btn[disabled], .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---------- Inputs ---------- */
+.input, .textarea { width: 100%; font-family: var(--font-body); font-size: var(--text-body); color: var(--fg1); background: var(--surface); border: 0.5px solid var(--line-strong); border-radius: var(--radius-sm); padding: 12px 14px; transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease); }
+.input:focus, .textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--focus-ring); }
+.textarea { min-height: 140px; resize: vertical; line-height: var(--lh-body); }
+.label { display: block; font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--fg1); margin-bottom: var(--space-2); }
+
+/* ---------- Layout ---------- */
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--space-7); }
+.readline { max-width: var(--readline); }
+.section { padding: var(--space-7) var(--space-7); }
+hr.section-divider { border: 0; border-top: 0.5px solid var(--line); margin: 0 var(--space-7); }
+
+/* ---------- Card (referentie: border-top accent op kaarten) ---------- */
+.card { background: var(--surface); border: 0.5px solid var(--line); border-radius: var(--radius-md); padding: var(--space-5); }
+.card--amber { border-top: 3px solid var(--accent-3); }
+.card--olive { border-top: 3px solid var(--accent-2); background: var(--accent-2-soft); }
+.card--bordeaux { border-top: 3px solid var(--accent); }
+
+/* ---------- Utility ---------- */
+.stack > * + * { margin-top: var(--space-4); }
+.stack-lg > * + * { margin-top: var(--space-6); }
+.stack-xl > * + * { margin-top: var(--space-7); }
+.hline { border: 0; border-top: 0.5px solid var(--line); margin: 0; }
+.text-muted { color: var(--fg2); }
+.text-accent { color: var(--accent); }
+.text-amber  { color: var(--accent-3); }
+.text-olive  { color: var(--accent-2); }

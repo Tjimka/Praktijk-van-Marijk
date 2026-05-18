@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktijk van Marijk – Brandingpagina v3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rood:        #89221d;
+      --okergoud:    #cf872d;
+      --olijf:       #a6ac3e;
+      --olijf-licht: #f0f2e4;
+      --creme:       #faf8f4;
+      --donker:      #2e1f0e;
+      --mid:         #5a4a38;
+      --zacht:       #8a7a68;
+      --lijn:        #e0d8cc;
+      --beige:       #e8dfd2;
+      --wit:         #ffffff;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--donker);
+    }
+
+    /* ── NAVIGATIE ── */
+    .topbar {
+      background: var(--creme);
+      border-bottom: 0.5px solid var(--lijn);
+      padding: 0 48px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .topbar-logo {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--donker);
+      letter-spacing: 0.02em;
+    }
+    .topbar-logo span {
+      font-weight: 400;
+      color: var(--rood);
+      font-size: 13px;
+      margin-left: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav a.active {
+      color: var(--rood);
+      border-bottom: 1.5px solid var(--rood);
+      padding-bottom: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+    .hero-text {
+      padding: 64px 48px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rood);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .hero-h1 {
+      font-family: 'Lora', serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--donker);
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 380px;
+      margin-bottom: 32px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--rood);
+      color: var(--creme);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      width: fit-content;
+    }
+    .hero-image {
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .photo-circle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--zacht);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--donker);
+    }
+    .photo-label {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .accent-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--okergoud);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 0.5px;
+      background: var(--lijn);
+      margin: 0 48px;
+    }
+
+    /* ── HERKENNING ── */
+    .herkenning {
+      padding: 48px 48px 40px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--rood);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .herkenning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .herk-card {
+      background: var(--wit);
+      border: 0.5px solid var(--lijn);
+      border-radius: 6px;
+      padding: 20px;
+      border-top: 3px solid var(--okergoud);
+    }
+    /* Middelste kaart: olijfgroen als subtiel accent, niet als vlakkleur */
+    .herk-card.green {
+      border-top: 3px solid var(--olijf);
+      background: var(--olijf-licht);
+    }
+    .herk-card.red {
+      border-top-color: var(--rood);
+    }
+    .herk-card-title {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--donker);
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    .herk-card-body {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── QUOTE ── */
+    .quote-strip {
+      background: var(--donker);
+      padding: 36px 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .quote-mark {
+      font-size: 52px;
+      color: var(--okergoud);
+      line-height: 1;
+      font-family: Georgia, serif;
+      flex-shrink: 0;
+      margin-top: -6px;
+    }
+    .quote-text {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      color: #f0e8de;
+      line-height: 1.65;
+      font-style: italic;
+    }
+    .quote-source {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--olijf);
+      margin-top: 10px;
+      letter-spacing: 0.06em;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    /* ── AANBOD ── */
+    .aanbod {
+      padding: 40px 48px 48px;
+    }
+    .aanbod-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .aanbod-item {
+      border: 0.5px solid var(--lijn);
+      border-radius: 6px;
+      padding: 20px 18px;
+      background: var(--wit);
+    }
+    .aanbod-nr {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--okergoud);
+      margin-bottom: 8px;
+    }
+    .aanbod-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--donker);
+      margin-bottom: 6px;
+    }
+    .aanbod-body {
+      font-size: 12px;
+      color: var(--zacht);
+      line-height: 1.55;
+    }
+
+    /* ── FONT DEMO ── */
+    .font-strip {
+      padding: 32px 48px;
+      background: var(--wit);
+      border-top: 0.5px solid var(--lijn);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .font-demo-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--zacht);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .font-demo-name {
+      font-size: 12px;
+      color: var(--rood);
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .font-demo-h {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--donker);
+      line-height: 1.35;
+    }
+    .font-demo-body-sample {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--donker);
+      line-height: 1.7;
+    }
+    .font-demo-body-sample strong { font-weight: 600; }
+    .font-demo-body-sample small {
+      display: block;
+      margin-top: 8px;
+      color: var(--zacht);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── KLEURPALET ── */
+    .palette-strip {
+      padding: 22px 48px;
+      border-top: 0.5px solid var(--lijn);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .palette-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--zacht);
+      margin-right: 12px;
+      font-weight: 500;
+    }
+    .swatch {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(0,0,0,0.1);
+    }
+    .swatch-label {
+      font-size: 10px;
+      color: var(--zacht);
+      margin-left: 4px;
+      margin-right: 14px;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATIE -->
+  <div class="topbar">
+    <div class="topbar-logo">Praktijk van Marijk <span>jeugdprofessionals</span></div>
+    <ul class="nav">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">Over Marijke</a></li>
+      <li><a href="#">Voor professionals</a></li>
+      <li><a href="#">Werkwijze</a></li>
+      <li><a href="#">Ervaringen</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-label">SKJ-geregistreerd jeugdprofessional</div>
+      <h1 class="hero-h1">Je voelt dat er iets niet klopt.<br>Je kunt het alleen nog niet<br>op papier krijgen.</h1>
+      <p class="hero-sub">Marijke Koomen helpt jeugdprofessionals de onderstroom te vertalen naar taal. Van onderbuikgevoel naar onderbouwde verslaglegging en helder handelen.</p>
+      <a href="#" class="btn-primary">Neem contact op</a>
+    </div>
+    <div class="hero-image">
+      <div class="accent-line"></div>
+      <div class="hero-photo-placeholder">
+        <div class="photo-circle"></div>
+        <div class="photo-label">portretfoto Marijke</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- HERKENNING -->
+  <div class="herkenning">
+    <div class="section-label">Herkenbaar?</div>
+    <div class="herkenning-grid">
+      <div class="herk-card">
+        <div class="herk-card-title">Je casus klopt niet, maar je kunt het niet benoemen</div>
+        <div class="herk-card-body">Je hebt een knoop in je maag na elk gesprek met die ene ouder. Je schrijft het op, maar het klinkt niet overtuigend. Dat is precies waar ik begin.</div>
+      </div>
+      <div class="herk-card green">
+        <div class="herk-card-title">De training zat vol goede inzichten. Een week later was alles weg.</div>
+        <div class="herk-card-body">Kennis wegzakt zodra de werkdruk terugkomt. Dat is geen persoonlijk falen. Het vraagt een andere aanpak om het werkbaar te houden.</div>
+      </div>
+      <div class="herk-card red">
+        <div class="herk-card-title">Je ziet twee ouders. Maar de dynamiek is niet gelijkwaardig.</div>
+        <div class="herk-card-body">Bij intiem terreur is er altijd sprake van een machtsdisbalans. Het past niet op een afvinklijstje. Maar het is wel zichtbaar, als je weet waar je op let.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-strip">
+    <div class="quote-mark">"</div>
+    <div>
+      <div class="quote-text">Eindelijk iemand die weet waar ik het over heb. Ik voelde mijn hele lijf ontspannen.</div>
+      <div class="quote-source">gezinsvoogd, wijkteam Noord-Holland</div>
+    </div>
+  </div>
+
+  <!-- AANBOD -->
+  <div class="aanbod">
+    <div class="section-label">Wat ik aanbied</div>
+    <div class="aanbod-grid">
+      <div class="aanbod-item">
+        <div class="aanbod-nr">01</div>
+        <div class="aanbod-title">Groepstraining</div>
+        <div class="aanbod-body">Intiem terreur, signalering en risicotaxatie. In groepen, in company.</div>
+      </div>
+      <div class="aanbod-item">
+        <div class="aanbod-nr">02</div>
+        <div class="aanbod-title">Casuïstiekcoaching</div>
+        <div class="aanbod-body">1-op-1 begeleiding op vastgelopen casussen. Geen overname, wel richting.</div>
+      </div>
+      <div class="aanbod-item">
+        <div class="aanbod-nr">03</div>
+        <div class="aanbod-title">Teamintervisie</div>
+        <div class="aanbod-body">Bij escalatie in de keten of vastgelopen samenwerking binnen het team.</div>
+      </div>
+      <div class="aanbod-item">
+        <div class="aanbod-nr">04</div>
+        <div class="aanbod-title">Mentorschap</div>
+        <div class="aanbod-body">Inzichten borgen in dagelijks handelen, verslaglegging en besluitvorming.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FONT DEMO -->
+  <div class="font-strip">
+    <div>
+      <div class="font-demo-label">Typografie</div>
+      <div class="font-demo-name">Lora 500 — titels en quotes</div>
+      <div class="font-demo-h">Van onderbuikgevoel naar<br>onderbouwde beslissing</div>
+    </div>
+    <div>
+      <div class="font-demo-label">&nbsp;</div>
+      <div class="font-demo-name">DM Sans — broodtekst, labels, navigatie</div>
+      <div class="font-demo-body-sample">
+        <strong>SKJ-geregistreerd jeugdprofessional</strong><br>
+        Marijke helpt professionals de onderstroom te vertalen naar taal, van onderbuikgevoel naar onderbouwde verslaglegging.
+        <small>DM Sans 400 / 500 / 600</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- PALET -->
+  <div class="palette-strip">
+    <div class="palette-title">Palet</div>
+    <div class="swatch" style="background:#89221d;"></div><span class="swatch-label">#89221d donkerrood</span>
+    <div class="swatch" style="background:#cf872d;"></div><span class="swatch-label">#cf872d okergoud</span>
+    <div class="swatch" style="background:#a6ac3e;"></div><span class="swatch-label">#a6ac3e olijf</span>
+    <div class="swatch" style="background:#f0f2e4;"></div><span class="swatch-label">#f0f2e4 olijf licht</span>
+    <div class="swatch" style="background:#faf8f4;"></div><span class="swatch-label">#faf8f4 achtergrond</span>
+    <div class="swatch" style="background:#2e1f0e;"></div><span class="swatch-label">#2e1f0e tekst</span>
+  </div>
+
+</body>
+</html>
