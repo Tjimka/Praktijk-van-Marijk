@@ -95,7 +95,7 @@ function Over() {
             Ik maak zichtbaar wat onder de oppervlakte speelt en vertaal dit naar concrete interventies en heldere veiligheidskaders.
           </div>
           <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: 'var(--accent-2)', marginTop: 18, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 500 }}>
-            Marijke Koomen, werkwijze in één zin
+            Marijke Koomen
           </div>
         </div>
       </div>
