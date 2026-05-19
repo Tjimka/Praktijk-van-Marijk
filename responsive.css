@@ -440,3 +440,8 @@ img, svg, video { max-width: 100%; height: auto; }
   .pvm-footer { padding: 32px 20px; grid-template-columns: 1fr; gap: 24px; }
   .pvm-footer__col--brand { grid-column: auto; }
 }
+@media (max-width: 768px) {
+  .pvm-topbar__logo {
+    height: 80px;
+  }
+}
