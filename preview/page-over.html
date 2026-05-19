@@ -15,10 +15,21 @@
     </div>
     <div class="page-root__url">praktijkvanmarijk.nl<b>/over</b></div>
   </div>
-  <iframe class="page-root__frame"
+  <iframe id="pvm-frame" class="page-root__frame"
           src="../ui_kits/website/index.html#over"
           title="Pagina Over Marijke"
-          loading="lazy"></iframe>
+          loading="eager"></iframe>
 </div>
+<script>
+  // Listen for height messages from the website and resize the iframe to fit.
+  const frame = document.getElementById('pvm-frame');
+  window.addEventListener('message', function (e) {
+    const d = e && e.data;
+    if (!d || d.type !== '__pvm_page_height') return;
+    if (d.route && d.route !== 'over') return;
+    const h = Math.max(600, Math.min(8000, parseInt(d.height, 10) || 0));
+    if (h) frame.style.height = h + 'px';
+  });
+</script>
 </body>
 </html>
