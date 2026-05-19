@@ -235,9 +235,9 @@ img, svg, video { max-width: 100%; height: auto; }
 @media (max-width: 960px) {
   .pvm-topbar__nav { display: none; }
   .pvm-topbar__hamburger { display: inline-flex; }
-  .pvm-topbar { padding: 0 24px; height: 68px; }
-  .pvm-topbar__logo { height: 52px; }
-  .pvm-topbar__sep { height: 24px; }
+  .pvm-topbar { padding: 0 24px; height: 76px; }
+  .pvm-topbar__logo { height: 64px; }
+  .pvm-topbar__sep { height: 28px; }
   .pvm-topbar__tagline { font-size: 10.5px; }
 
   /* Sectie-padding (alle blokken die op 48px horizontaal padding staan) */
@@ -317,8 +317,8 @@ img, svg, video { max-width: 100%; height: auto; }
 
 /* ---------- Mobile ≤ 720px ---------- */
 @media (max-width: 720px) {
-  .pvm-topbar { padding: 0 20px; height: 64px; }
-  .pvm-topbar__logo { height: 46px; }
+  .pvm-topbar { padding: 0 20px; height: 80px; }
+  .pvm-topbar__logo { height: 68px; }
   .pvm-topbar__sep { display: none; }
   .pvm-topbar__tagline { display: none; }
 
@@ -408,8 +408,8 @@ img, svg, video { max-width: 100%; height: auto; }
 
 /* ---------- Extra-klein ≤ 420px ---------- */
 @media (max-width: 420px) {
-  .pvm-topbar { padding: 0 16px; }
-  .pvm-topbar__logo { height: 40px; }
+  .pvm-topbar { padding: 0 16px; height: 72px; }
+  .pvm-topbar__logo { height: 60px; }
 
   [style*="padding: 56px 48px"],
   [style*="padding: 64px 48px"],
