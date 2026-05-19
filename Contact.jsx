@@ -1,23 +1,10 @@
 function Contact() {
-  const [form, setForm] = React.useState({ naam: '', email: '', organisatie: '', telefoon: '', bericht: '' });
-  const [sent, setSent] = React.useState(false);
-  const up = (k) => (e) => setForm({ ...form, [k]: e.target.value });
-  const submit = (e) => {e.preventDefault();setSent(true);};
-
   const inputStyle = {
     width: '100%', boxSizing: 'border-box',
     fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'var(--fg1)',
     background: '#fff', border: '0.5px solid var(--line-strong)',
     borderRadius: 4, padding: '10px 12px',
-    outline: 'none'
-  };
-  const labelStyle = {
-    display: 'block',
-    fontFamily: 'DM Sans, sans-serif',
-    fontSize: 13,
-    fontWeight: 500,
-    color: 'var(--fg1)',
-    marginBottom: 6
+    outline: 'none',
   };
 
   const eyebrowLabel = {
@@ -27,7 +14,7 @@ function Contact() {
     textTransform: 'uppercase',
     color: 'var(--fg3)',
     fontWeight: 500,
-    marginBottom: 14
+    marginBottom: 14,
   };
 
   return (
@@ -42,7 +29,7 @@ function Contact() {
           color: 'var(--fg1)',
           lineHeight: 1.3,
           margin: '0 0 20px',
-          textWrap: 'balance'
+          textWrap: 'balance',
         }}>
           Plan een vrijblijvende kennismaking.
         </h1>
@@ -52,7 +39,7 @@ function Contact() {
           color: 'var(--fg2)',
           lineHeight: 1.7,
           margin: 0,
-          maxWidth: 56 + 'ch'
+          maxWidth: 56 + 'ch',
         }}>
           Laat weten waar je tegenaan loopt. Ik reageer binnen twee werkdagen.
         </p>
@@ -66,59 +53,33 @@ function Contact() {
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)',
         gap: 72,
-        alignItems: 'start'
+        alignItems: 'start',
       }}>
-        {/* Form */}
-        {!sent ?
-        <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 560 }}>
-            <div>
-              <label style={labelStyle}>Naam</label>
-              <input required value={form.naam} onChange={up('naam')} style={inputStyle} />
-            </div>
-            <div>
-              <label style={labelStyle}>E-mail</label>
-              <input required type="email" value={form.email} onChange={up('email')} placeholder="naam@organisatie.nl" style={inputStyle} />
-            </div>
-            <div>
-              <label style={labelStyle}>Organisatie</label>
-              <input required value={form.organisatie} onChange={up('organisatie')} style={inputStyle} />
-            </div>
-            <div>
-              <label style={labelStyle}>
-                Telefoon <span style={{ color: 'var(--fg3)', fontWeight: 400 }}>(optioneel)</span>
-              </label>
-              <input type="tel" value={form.telefoon} onChange={up('telefoon')} style={inputStyle} />
-            </div>
-            <div>
-              <label style={labelStyle}>Bericht</label>
-              <textarea
-              required
-              value={form.bericht}
-              onChange={up('bericht')}
-              style={{ ...inputStyle, minHeight: 160, resize: 'vertical', lineHeight: 1.65, fontFamily: 'DM Sans, sans-serif' }} />
-            
-            </div>
-            <div style={{ marginTop: 4 }}>
-              <Button type="submit">Verstuur bericht</Button>
-            </div>
-          </form> :
+        {/* Form — Netlify */}
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 560 }}
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>Niet invullen: <input name="bot-field" /></label>
+          </p>
 
-        <div style={{
-          padding: 28,
-          border: '0.5px solid var(--line)',
-          borderTop: '3px solid var(--accent-2)',
-          borderRadius: 6,
-          background: '#fff',
-          maxWidth: 560
-        }}>
-            <div style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', marginBottom: 8 }}>
-              Verzonden.
-            </div>
-            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'var(--fg2)', lineHeight: 1.7 }}>
-              {form.naam ? `Dank, ${form.naam.split(' ')[0]}. ` : ''}Ik reageer binnen twee werkdagen.
-            </div>
+          <input type="text" name="naam" placeholder="Naam" required style={inputStyle} />
+          <input type="email" name="email" placeholder="E-mail" required style={inputStyle} />
+          <textarea
+            name="bericht"
+            placeholder="Bericht"
+            required
+            style={{ ...inputStyle, minHeight: 160, resize: 'vertical', lineHeight: 1.65, fontFamily: 'DM Sans, sans-serif' }}
+          />
+          <div style={{ marginTop: 4 }}>
+            <Button type="submit">Verstuur</Button>
           </div>
-        }
+        </form>
 
         {/* Rechterkolom, foto + directe gegevens */}
         <div>
@@ -128,14 +89,14 @@ function Contact() {
             overflow: 'hidden',
             position: 'relative',
             aspectRatio: '3/2',
-            marginBottom: 28
+            marginBottom: 28,
           }}>
             <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: 'var(--accent)', zIndex: 2 }} />
             <img
-              src={window.__resources && window.__resources.marijkeContact || "assets/marijke-contact.jpg"}
+              src={(window.__resources && window.__resources.marijkeContact) || "assets/marijke-contact.jpg"}
               alt="Marijke Koomen bij de entree van de praktijk"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-            
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
           </div>
 
           <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 14.5, color: 'var(--fg1)', lineHeight: 1.8 }}>
@@ -146,8 +107,21 @@ function Contact() {
               </a>
             </div>
             <div style={{ marginBottom: 28, fontVariantNumeric: 'tabular-nums' }}>
-              <a href="tel:+31627376003" style={{ color: 'var(--fg1)', textDecoration: 'none', borderBottom: '0.5px solid var(--line-strong)' }}>06 - 27 37 60 03
+              <a href="tel:+31627376003" style={{ color: 'var(--fg1)', textDecoration: 'none', borderBottom: '0.5px solid var(--line-strong)' }}>
+                06 - 27 37 60 03
+              </a>
+            </div>
 
+            <div style={eyebrowLabel}>Volg de praktijk</div>
+            <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
+              <a href="https://www.facebook.com/profile.php?id=61562826452913" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="facebook" size={16} strokeWidth={1.5} />
+              </a>
+              <a href="https://www.instagram.com/praktijkvanmarijk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="instagram" size={16} strokeWidth={1.5} />
+              </a>
+              <a href="https://www.linkedin.com/in/marijke-koomen-365096b1/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="linkedin" size={16} strokeWidth={1.5} />
               </a>
             </div>
 
@@ -157,7 +131,7 @@ function Contact() {
               gridTemplateColumns: '92px 1fr',
               rowGap: 4,
               fontSize: 14,
-              color: 'var(--fg2)'
+              color: 'var(--fg2)',
             }}>
               <div style={{ color: 'var(--fg3)' }}>SKJ</div>
               <div style={{ color: 'var(--fg1)', fontVariantNumeric: 'tabular-nums' }}>110005309</div>
@@ -167,8 +141,8 @@ function Contact() {
           </div>
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }
 
 Object.assign(window, { Contact });
