@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <title>Marijke Koomen | Specialist intiem terreur en jeugdbescherming | Praktijk van Marijk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- SEO -->
+  <meta name="description" content="Marijke Koomen is SKJ-geregistreerd jeugdprofessional en specialist in intiem terreur en complexe gezinssystemen. Ze traint en begeleidt professionals in jeugdzorg, jeugdbescherming en wijkteams."/>
+  <meta name="keywords" content="intiem terreur jeugdzorg, training jeugdprofessionals, complexe gezinssystemen, SKJ-geregistreerd, casuïstiekcoaching, risicotaxatie, Marijke Koomen"/>
+  <link rel="canonical" href="https://praktijkvanmarijk.nl/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Praktijk van Marijk | Specialist intiem terreur voor jeugdprofessionals"/>
+  <meta property="og:description" content="Marijke Koomen helpt jeugdprofessionals de onderstroom te vertalen naar taal. Van onderbuikgevoel naar onderbouwde verslaglegging."/>
+  <meta property="og:url" content="https://praktijkvanmarijk.nl/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://praktijkvanmarijk.nl/og-image.jpg"/>
+  <meta property="og:locale" content="nl_NL"/>
+
+  <!-- GEO -->
+  <meta name="language" content="nl-NL"/>
+  <meta name="geo.region" content="NL"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="colors_and_type.css"/>
+  <style>body { font-family: 'DM Sans', system-ui, sans-serif; }</style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    body { margin: 0; }
+
+    /* Over-pagina — hero */
+    .over-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 360px);
+      gap: 56px;
+      padding: 56px 48px 48px;
+      align-items: start;
+    }
+    .over-hero__text > h1,
+    .over-hero__text > p { max-width: 60ch; }
+    .over-hero__portret { width: 100%; }
+
+    @media (max-width: 960px) {
+      .over-hero {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 300px);
+        gap: 40px;
+        padding: 48px 32px 40px;
+      }
+    }
+    @media (max-width: 720px) {
+      .over-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 24px 32px;
+      }
+      .over-hero__portret {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marijke Koomen",
+    "jobTitle": "SKJ-geregistreerd jeugdprofessional en specialist intiem terreur",
+    "url": "https://praktijkvanmarijk.nl",
+    "sameAs": [
+      "https://www.linkedin.com/in/marijke-koomen-365096b1/",
+      "https://www.facebook.com/profile.php?id=61562826452913",
+      "https://www.instagram.com/praktijkvanmarijk/"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Praktijk van Marijk",
+      "url": "https://praktijkvanmarijk.nl"
+    },
+    "knowsAbout": ["intiem terreur", "jeugdbescherming", "complexe gezinssystemen", "risicotaxatie", "jeugdzorg"]
+  }
+  </script>
+
+  <!-- Structured data: ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Praktijk van Marijk",
+    "url": "https://praktijkvanmarijk.nl",
+    "description": "Specialist in intiem terreur, complexe gezinssystemen en training voor jeugdprofessionals.",
+    "serviceType": ["Groepstraining", "Casuïstiekcoaching", "Teamintervisie", "Mentorschap"],
+    "areaServed": "Nederland",
+    "knowsAbout": ["intiem terreur", "SKJ-registratie", "jeugdbescherming", "wijkteams"],
+    "founder": {
+      "@type": "Person",
+      "name": "Marijke Koomen"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Netlify form detectie -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="naam" />
+    <input type="email" name="email" />
+    <textarea name="bericht"></textarea>
+    <button type="submit">Verstuur</button>
+  </form>
+  <div id="root"></div>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="Primitives.jsx"></script>
+  <script type="text/babel" src="Chrome.jsx"></script>
+  <script type="text/babel" src="Home.jsx"></script>
+  <script type="text/babel" src="Over.jsx"></script>
+  <script type="text/babel" src="Professionals.jsx"></script>
+  <script type="text/babel" src="Werkwijze.jsx"></script>
+  <script type="text/babel" src="Ervaringen.jsx"></script>
+  <script type="text/babel" src="Contact.jsx"></script>
+  <script type="text/babel" src="App.jsx"></script>
+</body>
+</html>
