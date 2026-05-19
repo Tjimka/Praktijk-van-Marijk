@@ -27,6 +27,24 @@ function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
+  // Report body height to a parent frame (used by preview cards to autosize).
+  React.useEffect(() => {
+    if (window.parent === window) return;
+    let last = 0;
+    const send = () => {
+      const h = document.documentElement.scrollHeight;
+      if (h !== last) {
+        last = h;
+        try { window.parent.postMessage({ type: '__pvm_page_height', route, height: h }, '*'); } catch (_) {}
+      }
+    };
+    send();
+    const ro = new ResizeObserver(send);
+    ro.observe(document.documentElement);
+    const id = setInterval(send, 500);
+    return () => { ro.disconnect(); clearInterval(id); };
+  }, [route]);
+
   const page = {
     home: <Home setRoute={setRoute} />,
     over: <Over />,

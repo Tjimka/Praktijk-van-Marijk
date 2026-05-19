@@ -2,8 +2,8 @@ function Home({ setRoute }) {
   return (
     <div>
       {/* Hero */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 56, padding: '56px 48px 48px', alignItems: 'start' }}>
-        <div style={{ maxWidth: 480 }}>
+      <div className="pvm-hero" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 56, padding: '56px 48px 48px', alignItems: 'start' }}>
+        <div className="pvm-hero-text" style={{ maxWidth: 480 }}>
           <p style={{
             fontFamily: 'DM Sans, sans-serif',
             fontSize: 11,
@@ -14,6 +14,7 @@ function Home({ setRoute }) {
             margin: '0 0 16px',
           }}>SKJ-geregistreerd specialist intiem terreur en complexe gezinssystemen</p>
           <h1
+            className="pvm-h1"
             aria-label="Marijke Koomen, specialist intiem terreur voor jeugdprofessionals"
             style={{ fontFamily: 'Lora, serif', fontSize: 32, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.3, margin: '0 0 20px', textWrap: 'balance' }}
           >
@@ -27,7 +28,7 @@ function Home({ setRoute }) {
           </div>
         </div>
         <figure style={{ margin: 0 }}>
-          <div style={{ background: 'var(--beige)', borderRadius: 6, aspectRatio: '3/2', position: 'relative', overflow: 'hidden' }}>
+          <div className="pvm-hero-image" style={{ background: 'var(--beige)', borderRadius: 6, aspectRatio: '3/2', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 4, background: 'var(--accent-3)', zIndex: 2 }}></div>
             <img src={(window.__resources && window.__resources.marijkeSessie) || "assets/marijke-sessie.jpg"} alt="Marijke Koomen in gesprek met twee professionals aan tafel" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
           </div>
@@ -36,9 +37,9 @@ function Home({ setRoute }) {
       <SectionDivider />
 
       {/* Herkenning */}
-      <div style={{ padding: '56px 48px 48px' }}>
+      <div className="pvm-section" style={{ padding: '56px 48px 48px' }}>
         <Eyebrow>Herkenbaar?</Eyebrow>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+        <div className="pvm-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           <Card accent="bordeaux">
             <div style={{ fontFamily: 'Lora, serif', fontSize: 15, fontWeight: 500, color: 'var(--fg1)', marginBottom: 10, lineHeight: 1.45 }}>Je casus klopt niet en toch kun je het niet op papier krijgen.</div>
             <div style={{ fontSize: 13, color: 'var(--fg2)', lineHeight: 1.6 }}>Je hebt een knoop in je maag na elk gesprek met die ene ouder. Je schrijft het op. Het klinkt alleen niet overtuigend. Dat is precies waar ik begin.</div>
@@ -55,9 +56,9 @@ function Home({ setRoute }) {
       </div>
 
       {/* Aanbod */}
-      <div style={{ padding: '8px 48px 56px' }}>
+      <div className="pvm-section" style={{ padding: '8px 48px 56px' }}>
         <Eyebrow>Wat ik aanbied</Eyebrow>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+        <div className="pvm-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
           {[
             ['01', 'Groepstraining', 'intiem terreur en risicotaxatie', 'Intiem terreur, signalering en risicotaxatie en het schrijven van feitelijke, onderbouwde verslaglegging. Altijd met eigen casuïstiek van de deelnemers.'],
             ['02', 'Casuïstiekcoaching', 'voor vastgelopen jeugdzorgcasussen', 'Individuele begeleiding voor professionals die vastlopen in een specifieke casus.'],
@@ -78,6 +79,7 @@ function Home({ setRoute }) {
 
       {/* Quote strip */}
       <blockquote
+        className="pvm-quote-strip"
         cite="https://praktijkvanmarijk.nl"
         style={{ background: 'var(--surface-dark)', padding: '44px 48px', display: 'flex', alignItems: 'flex-start', gap: 28, margin: 0 }}
       >
@@ -92,6 +94,7 @@ function Home({ setRoute }) {
       <section
         id="faq"
         aria-label="Veelgestelde vragen"
+        className="pvm-section"
         style={{ padding: '64px 48px 8px' }}
       >
         <Eyebrow>Veelgestelde vragen</Eyebrow>
@@ -138,7 +141,7 @@ function Home({ setRoute }) {
       </section>
 
       {/* Slot-CTA */}
-      <div style={{ padding: '64px 48px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 32 }}>
+      <div className="pvm-cta-row" style={{ padding: '64px 48px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 32 }}>
         <div>
           <h2 style={{ fontFamily: 'Lora, serif', fontSize: 24, fontWeight: 500, color: 'var(--fg1)', margin: '0 0 8px', lineHeight: 1.3 }}>Klaar om verder te kijken?</h2>
           <p style={{ fontSize: 15, color: 'var(--fg2)', margin: 0, maxWidth: 520, lineHeight: 1.65 }}>Neem contact op voor een vrijblijvende kennismaking. Ik reageer binnen twee werkdagen.</p>

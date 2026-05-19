@@ -20,9 +20,9 @@ function Contact() {
   return (
     <div>
       {/* ============ HERO ============ */}
-      <div style={{ padding: '64px 48px 32px', maxWidth: 760 }}>
+      <div className="pvm-section" style={{ padding: '64px 48px 32px', maxWidth: 760 }}>
         <Eyebrow>Contact</Eyebrow>
-        <h1 style={{
+        <h1 className="pvm-h1" style={{
           fontFamily: 'Lora, serif',
           fontSize: 34,
           fontWeight: 500,
@@ -48,7 +48,7 @@ function Contact() {
       <SectionDivider />
 
       {/* ============ FORMULIER + GEGEVENS ============ */}
-      <div style={{
+      <div className="pvm-contact-grid" style={{
         padding: '56px 48px 64px',
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)',

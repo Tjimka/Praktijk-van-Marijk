@@ -372,7 +372,7 @@ function Over() {
       </div>
 
       {/* ============ KERNZIN, dark quote strip ============ */}
-      <div style={{ background: 'var(--surface-dark)', padding: '56px 48px', display: 'flex', alignItems: 'flex-start', gap: 28 }}>
+      <div className="pvm-quote-strip" style={{ background: 'var(--surface-dark)', padding: '56px 48px', display: 'flex', alignItems: 'flex-start', gap: 28 }}>
         <div style={{ fontSize: 64, color: 'var(--accent-2)', lineHeight: 0.85, fontFamily: 'Lora, Georgia, serif', flexShrink: 0, marginTop: -6 }}>&ldquo;</div>
         <div style={{ maxWidth: 820 }}>
           <div style={{ fontFamily: 'Lora, serif', fontSize: 24, fontWeight: 500, color: 'var(--fg-on-dark)', lineHeight: 1.45, fontStyle: 'italic', textWrap: 'balance' }}>
@@ -385,8 +385,8 @@ function Over() {
       </div>
 
       {/* ============ TIJDLIJN ============ */}
-      <div style={{ padding: '72px 48px 56px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start', marginBottom: 36 }}>
+      <div className="pvm-section" style={{ padding: '72px 48px 56px' }}>
+        <div className="pvm-split" style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start', marginBottom: 36 }}>
           <div>
             <Eyebrow>Achtergrond</Eyebrow>
             <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 460, textWrap: 'balance' }}>
@@ -404,6 +404,7 @@ function Over() {
           {[...tijdlijn].reverse().map(([yr, title, note], i) => (
             <div
               key={i}
+              className="pvm-timeline-row"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '180px 1fr',
@@ -439,9 +440,9 @@ function Over() {
       <SectionDivider />
 
       {/* ============ SAMENGEWERKT MET ============ */}
-      <div style={{ padding: '64px 48px 48px' }}>
+      <div className="pvm-section" style={{ padding: '64px 48px 48px' }}>
         <Eyebrow>Samengewerkt met</Eyebrow>
-        <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: '0 0 28px', whiteSpace: 'nowrap' }}>
+        <h2 className="pvm-allow-wrap" style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: '0 0 28px', whiteSpace: 'nowrap' }}>
           Opdrachtgevers en samenwerkingspartners in de jeugdketen.
         </h2>
 
@@ -487,7 +488,7 @@ function Over() {
       <SectionDivider />
 
       {/* ============ OPLEIDING ============ */}
-      <div style={{ padding: '64px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
+      <div className="pvm-section pvm-split" style={{ padding: '64px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
         <div>
           <Eyebrow>Opleiding en methodieken</Eyebrow>
           <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 280 }}>

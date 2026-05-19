@@ -7,8 +7,23 @@ function Topbar({ route, setRoute }) {
     ['ervaringen', 'Ervaringen jeugdzorg', 'Ervaringen uit jeugdzorg en jeugdbescherming'],
     ['contact', 'Contact', 'Neem contact op met Marijke Koomen'],
   ];
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  // Close drawer on Esc, and lock body scroll when open.
+  React.useEffect(() => {
+    if (!drawerOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e) => { if (e.key === 'Escape') setDrawerOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); };
+  }, [drawerOpen]);
+
+  const go = (key) => { setRoute(key); setDrawerOpen(false); };
+
   return (
-    <div style={{
+    <div className="pvm-topbar" style={{
       background: 'var(--bg)',
       borderBottom: '0.5px solid var(--line)',
       padding: '0 48px',
@@ -25,19 +40,21 @@ function Topbar({ route, setRoute }) {
         cursor: 'pointer',
         textDecoration: 'none',
         whiteSpace: 'nowrap',
+        minWidth: 0,
       }}>
         <img
           src={(window.__resources && window.__resources.logoPraktijk) || "assets/logo-praktijk-van-marijk.png"}
           alt="Praktijk van Marijk"
+          className="pvm-topbar-logo"
           style={{ height: 64, width: 'auto', display: 'block' }}
         />
-        <span style={{
+        <span className="pvm-topbar-divider" style={{
           display: 'inline-block',
           width: 1,
           height: 28,
           background: 'var(--line)',
         }}></span>
-        <span style={{
+        <span className="pvm-topbar-tagline" style={{
           fontFamily: 'DM Sans, sans-serif',
           fontWeight: 500,
           color: 'var(--accent)',
@@ -46,7 +63,9 @@ function Topbar({ route, setRoute }) {
           textTransform: 'uppercase',
         }}>voor jeugd&shy;professionals</span>
       </a>
-      <ul style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
+
+      {/* Desktop nav */}
+      <ul className="pvm-nav" style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
         {items.map(([key, label, title]) => (
           <li key={key}>
             <a
@@ -68,13 +87,60 @@ function Topbar({ route, setRoute }) {
           </li>
         ))}
       </ul>
+
+      {/* Mobile hamburger */}
+      <button
+        className="pvm-hamburger"
+        type="button"
+        aria-label="Menu openen"
+        aria-expanded={drawerOpen}
+        onClick={() => setDrawerOpen(true)}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+
+      {/* Mobile drawer + backdrop */}
+      {drawerOpen && (
+        <React.Fragment>
+          <div className="pvm-mobile-drawer-backdrop" onClick={() => setDrawerOpen(false)} aria-hidden="true" />
+          <nav className="pvm-mobile-drawer" aria-label="Hoofdmenu" role="dialog" aria-modal="true">
+            <button
+              type="button"
+              className="pvm-mobile-drawer__close"
+              aria-label="Menu sluiten"
+              onClick={() => setDrawerOpen(false)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+              </svg>
+            </button>
+            <ul className="pvm-mobile-drawer__nav">
+              {items.map(([key, label, title]) => (
+                <li key={key}>
+                  <a
+                    onClick={() => go(key)}
+                    title={title}
+                    aria-label={title}
+                    className={route === key ? 'is-active' : ''}
+                  >{label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </React.Fragment>
+      )}
     </div>
   );
 }
 
 function Footer({ setRoute }) {
   return (
-    <div style={{
+    <div className="pvm-footer" style={{
       borderTop: '0.5px solid var(--line)',
       padding: '40px 48px',
       display: 'grid',
@@ -101,7 +167,7 @@ function Footer({ setRoute }) {
       </div>
       <div>
         <div style={{ fontSize: 11, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'var(--fg3)', fontWeight: 500, marginBottom: 8 }}>Contact</div>
-        <div><a href="mailto:marijke@praktijkvanmarijk.nl" style={{ color: 'var(--fg2)', textDecoration: 'none' }}>marijke@praktijkvanmarijk.nl</a></div>
+        <div><a href="mailto:marijke@praktijkvanmarijk.nl" style={{ color: 'var(--fg2)', textDecoration: 'none', wordBreak: 'break-word' }}>marijke@praktijkvanmarijk.nl</a></div>
         <div style={{ fontVariantNumeric: 'tabular-nums' }}><a href="tel:+31627376003" style={{ color: 'var(--fg2)', textDecoration: 'none' }}>06 - 27 37 60 03</a></div>
         <a href="https://calendly.com/praktijkvanmarijk/25min" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: 8, color: 'var(--accent)', cursor: 'pointer', textDecoration: 'none' }}>Plan een kennismaking →</a>
         <div style={{ display: 'flex', gap: 10, marginTop: 16 }}>

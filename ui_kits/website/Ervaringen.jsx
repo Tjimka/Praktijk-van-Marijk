@@ -62,6 +62,7 @@ function TestimonialCarousel({ quotes }) {
       onBlur={() => setPaused(false)}
       aria-roledescription="carousel"
       aria-label="Ervaringen van professionals"
+      className="pvm-carousel"
       style={{
         background: '#faf8f4',
         padding: '88px 48px 72px',
@@ -69,7 +70,7 @@ function TestimonialCarousel({ quotes }) {
         position: 'relative',
       }}
     >
-      <div style={{
+      <div className="pvm-carousel-inner" style={{
         maxWidth: 820,
         margin: '0 auto',
         display: 'grid',
@@ -100,6 +101,7 @@ function TestimonialCarousel({ quotes }) {
           aria-label={`Ervaring ${index + 1} van ${total}`}
           aria-live="polite"
           aria-atomic="true"
+          className="pvm-carousel-quote"
           style={{
             opacity: visible ? 1 : 0,
             transition: `opacity ${FADE_MS}ms ease`,
@@ -222,16 +224,16 @@ function Ervaringen({ setRoute }) {
   return (
     <div>
       {/* ============ HERO ============ */}
-      <div style={{
+      <div className="pvm-hero" style={{
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
         gap: 56,
         padding: '56px 48px 48px',
         alignItems: 'start',
       }}>
-        <div style={{ maxWidth: 480 }}>
+        <div className="pvm-hero-text" style={{ maxWidth: 480 }}>
           <Eyebrow>Ervaringen</Eyebrow>
-          <h1 style={{
+          <h1 className="pvm-h1" style={{
             fontFamily: 'Lora, serif',
             fontSize: 30,
             fontWeight: 500,
@@ -270,7 +272,7 @@ function Ervaringen({ setRoute }) {
 
         {/* Foto, training in uitvoering */}
         <figure style={{ margin: 0 }}>
-          <div style={{
+          <div className="pvm-hero-image" style={{
             background: 'var(--beige)',
             borderRadius: 6,
             aspectRatio: '3/2',
@@ -302,7 +304,7 @@ function Ervaringen({ setRoute }) {
       <TestimonialCarousel quotes={quotes} />
 
       {/* ============ CONTACT CTA ============ */}
-      <div style={{ padding: '48px 48px 56px', textAlign: 'center' }}>
+      <div className="pvm-section" style={{ padding: '48px 48px 56px', textAlign: 'center' }}>
         <p style={{
           fontFamily: 'DM Sans, sans-serif',
           fontSize: 15,

@@ -15,7 +15,7 @@ function Eyebrow({ children, color }) {
 }
 
 function SectionDivider() {
-  return <div style={{ height: '0.5px', background: 'var(--line)', margin: '0 48px' }} />;
+  return <div className="pvm-section-divider" style={{ height: '0.5px', background: 'var(--line)', margin: '0 48px' }} />;
 }
 
 function Button({ children, variant = 'primary', onClick, href, type, target, rel }) {

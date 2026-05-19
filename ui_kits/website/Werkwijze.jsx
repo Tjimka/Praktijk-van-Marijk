@@ -60,11 +60,12 @@ function Werkwijze() {
       </div>
 
       {/* ============ DRIE FASEN ============ */}
-      <div style={{ padding: '64px 48px 64px', background: 'var(--bg-sunken)' }}>
+      <div className="pvm-section" style={{ padding: '64px 48px 64px', background: 'var(--bg-sunken)' }}>
         <div>
           {fasen.map((f, i) => (
             <div
               key={f.nr}
+              className="pvm-phase-row"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '88px 1fr 180px',
@@ -108,7 +109,7 @@ function Werkwijze() {
       </div>
 
       {/* ============ WAT IK NIET DOE ============ */}
-      <div style={{ padding: '64px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
+      <div className="pvm-section pvm-split" style={{ padding: '64px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
         <div>
           <Eyebrow>Wat ik niet doe</Eyebrow>
           <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 320, textWrap: 'balance' }}>

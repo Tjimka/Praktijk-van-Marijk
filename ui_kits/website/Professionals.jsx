@@ -42,7 +42,7 @@ function Professionals({ skjPlacement = 'bottom-aligned' }) {
   // Brede strip, voor 'footer-strip'
   const SkjStrip = () => (
     <div style={{ borderTop: '0.5px solid var(--line)', borderBottom: '0.5px solid var(--line)', background: 'var(--bg-sunken)' }}>
-      <div style={{ padding: '14px 48px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 18 }}>
+      <div className="pvm-skj-strip" style={{ padding: '14px 48px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 18 }}>
         <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--fg3)', fontWeight: 500 }}>SKJ-registratie</div>
         <div style={{ width: '0.5px', height: 16, background: 'var(--line-strong)' }} />
         <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 14, fontWeight: 600, color: 'var(--fg1)', letterSpacing: '0.02em' }}>110005309</div>
@@ -135,8 +135,8 @@ function Professionals({ skjPlacement = 'bottom-aligned' }) {
       {!footerStrip && <SectionDivider />}
 
       {/* ============ DOELGROEPKAARTEN ============ */}
-      <div style={{ padding: '64px 48px 56px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start', marginBottom: 32 }}>
+      <div className="pvm-section" style={{ padding: '64px 48px 56px' }}>
+        <div className="pvm-split" style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start', marginBottom: 32 }}>
           <div>
             <Eyebrow>Doelgroepen</Eyebrow>
             <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 320, textWrap: 'balance' }}>
@@ -150,7 +150,7 @@ function Professionals({ skjPlacement = 'bottom-aligned' }) {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+        <div className="pvm-grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
           {rollen.map((r) => (
             <Card key={r.title} accent={r.accent} style={r.accent === 'olive' ? { background: '#ffffff' } : undefined}>
               <div style={{ fontFamily: 'Lora, serif', fontSize: 19, fontWeight: 500, color: 'var(--fg1)', marginBottom: 10, lineHeight: 1.35 }}>
@@ -167,8 +167,8 @@ function Professionals({ skjPlacement = 'bottom-aligned' }) {
       <SectionDivider />
 
       {/* ============ PROBLEEMSCHETS ============ */}
-      <div style={{ padding: '72px 48px 64px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
+      <div className="pvm-section" style={{ padding: '72px 48px 64px' }}>
+        <div className="pvm-split" style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
           <div>
             <Eyebrow>Wat professionals meemaken</Eyebrow>
             <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 320, textWrap: 'balance' }}>
@@ -192,8 +192,8 @@ function Professionals({ skjPlacement = 'bottom-aligned' }) {
       <SectionDivider />
 
       {/* ============ WANNEER PAST DIT NIET ============ */}
-      <div style={{ padding: '64px 48px 80px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
+      <div className="pvm-section" style={{ padding: '64px 48px 80px' }}>
+        <div className="pvm-split" style={{ display: 'grid', gridTemplateColumns: '1fr 2.4fr', gap: 64, alignItems: 'start' }}>
           <div>
             <Eyebrow>Wanneer past dit niet</Eyebrow>
             <h2 style={{ fontFamily: 'Lora, serif', fontSize: 22, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.4, margin: 0, maxWidth: 320, textWrap: 'balance' }}>
