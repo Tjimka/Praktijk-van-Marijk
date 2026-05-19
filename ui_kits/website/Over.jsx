@@ -1,3 +1,281 @@
+function LogoSlider({ items }) {
+  const trackRef = React.useRef(null);
+  const [page, setPage] = React.useState(0);
+  const [pageCount, setPageCount] = React.useState(1);
+  const [perView, setPerView] = React.useState(5);
+  const dragState = React.useRef(null);
+
+  // Responsive perView
+  React.useEffect(() => {
+    const compute = () => {
+      const w = window.innerWidth;
+      if (w < 560) setPerView(1);
+      else if (w < 760) setPerView(2);
+      else if (w < 980) setPerView(3);
+      else if (w < 1200) setPerView(4);
+      else setPerView(5);
+    };
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+  }, []);
+
+  // Recalculate pageCount based on visible vs total
+  React.useEffect(() => {
+    setPageCount(Math.max(1, items.length - perView + 1));
+    setPage((p) => Math.min(p, Math.max(0, items.length - perView)));
+  }, [items.length, perView]);
+
+  const scrollToPage = (idx) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.children[0];
+    if (!card) return;
+    const cardWidth = card.getBoundingClientRect().width;
+    track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+  };
+
+  const onScroll = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.children[0];
+    if (!card) return;
+    const cardWidth = card.getBoundingClientRect().width;
+    const idx = Math.round(track.scrollLeft / cardWidth);
+    setPage(Math.min(Math.max(0, idx), pageCount - 1));
+  };
+
+  const go = (delta) => {
+    const next = Math.min(Math.max(0, page + delta), pageCount - 1);
+    setPage(next);
+    scrollToPage(next);
+  };
+
+  // Drag to scroll
+  const onPointerDown = (e) => {
+    const track = trackRef.current;
+    if (!track) return;
+    dragState.current = {
+      startX: e.clientX,
+      startScroll: track.scrollLeft,
+      moved: false,
+      pointerId: e.pointerId,
+    };
+    track.setPointerCapture(e.pointerId);
+    track.style.scrollBehavior = 'auto';
+    track.style.cursor = 'grabbing';
+  };
+  const onPointerMove = (e) => {
+    const track = trackRef.current;
+    const st = dragState.current;
+    if (!track || !st) return;
+    const dx = e.clientX - st.startX;
+    if (Math.abs(dx) > 3) st.moved = true;
+    track.scrollLeft = st.startScroll - dx;
+  };
+  const endDrag = (e) => {
+    const track = trackRef.current;
+    const st = dragState.current;
+    if (!track || !st) return;
+    try { track.releasePointerCapture(st.pointerId); } catch (_) {}
+    track.style.scrollBehavior = '';
+    track.style.cursor = '';
+    // Snap to nearest page
+    const card = track.children[0];
+    if (card) {
+      const cardWidth = card.getBoundingClientRect().width;
+      const idx = Math.round(track.scrollLeft / cardWidth);
+      const clamped = Math.min(Math.max(0, idx), pageCount - 1);
+      setPage(clamped);
+      track.scrollTo({ left: cardWidth * clamped, behavior: 'smooth' });
+    }
+    dragState.current = null;
+  };
+
+  const atStart = page <= 0;
+  const atEnd = page >= pageCount - 1;
+
+  const ArrowBtn = ({ direction, disabled, onClick, label }) => (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      style={{
+        width: 40,
+        height: 40,
+        borderRadius: '50%',
+        border: '0.5px solid var(--line)',
+        background: disabled ? 'transparent' : 'var(--surface)',
+        color: disabled ? 'var(--fg3)' : 'var(--fg1)',
+        cursor: disabled ? 'default' : 'pointer',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: disabled ? 0.4 : 1,
+        transition: 'background 0.15s ease, color 0.15s ease',
+        fontFamily: 'DM Sans, sans-serif',
+        padding: 0,
+      }}
+      onMouseEnter={(e) => { if (!disabled) e.currentTarget.style.background = 'var(--accent-2-soft)'; }}
+      onMouseLeave={(e) => { if (!disabled) e.currentTarget.style.background = 'var(--surface)'; }}
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {direction === 'prev'
+          ? <polyline points="15 18 9 12 15 6"></polyline>
+          : <polyline points="9 18 15 12 9 6"></polyline>}
+      </svg>
+    </button>
+  );
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {/* Slider track */}
+      <div
+        ref={trackRef}
+        onScroll={onScroll}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        style={{
+          display: 'flex',
+          overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          borderTop: '0.5px solid var(--line)',
+          borderBottom: '0.5px solid var(--line)',
+          borderLeft: '0.5px solid var(--line)',
+          cursor: 'grab',
+          userSelect: 'none',
+        }}
+        className="logo-slider-track"
+      >
+        {items.map((org, i) => (
+          <div
+            key={i}
+            style={{
+              flex: `0 0 calc(100% / ${perView})`,
+              borderRight: '0.5px solid var(--line)',
+              padding: '32px 20px 20px',
+              minHeight: 168,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 18,
+              background: 'var(--surface)',
+              scrollSnapAlign: 'start',
+              boxSizing: 'border-box',
+            }}
+            title={org.name}
+          >
+            <div style={{
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              minHeight: 80,
+              pointerEvents: 'none',
+            }}>
+              <img
+                src={org.logo}
+                alt={`Logo ${org.name}`}
+                draggable={false}
+                style={{
+                  maxHeight: org.maxHeight || 56,
+                  maxWidth: '100%',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+            <div style={{ textAlign: 'center', pointerEvents: 'none' }}>
+              <div style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 12,
+                fontWeight: 500,
+                color: 'var(--fg1)',
+                lineHeight: 1.4,
+                letterSpacing: '0.01em',
+              }}>{org.name}</div>
+              {org.sub && (
+                <div style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: 11,
+                  color: 'var(--fg3)',
+                  lineHeight: 1.45,
+                  marginTop: 3,
+                }}>{org.sub}</div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Controls */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 16,
+        marginTop: 20,
+        flexWrap: 'wrap',
+      }}>
+        {/* Page dots */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => { setPage(i); scrollToPage(i); }}
+              aria-label={`Ga naar pagina ${i + 1}`}
+              style={{
+                width: i === page ? 22 : 8,
+                height: 8,
+                border: 'none',
+                padding: 0,
+                borderRadius: 4,
+                background: i === page ? 'var(--accent-2)' : 'var(--line)',
+                cursor: 'pointer',
+                transition: 'width 0.2s ease, background 0.2s ease',
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Counter + arrows */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{
+            fontFamily: 'DM Sans, sans-serif',
+            fontSize: 11,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'var(--fg3)',
+            fontWeight: 500,
+            fontVariantNumeric: 'tabular-nums',
+          }}>
+            {String(Math.min(page + perView, items.length)).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
+          </div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            <ArrowBtn direction="prev" disabled={atStart} onClick={() => go(-1)} label="Vorige" />
+            <ArrowBtn direction="next" disabled={atEnd} onClick={() => go(1)} label="Volgende" />
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .logo-slider-track::-webkit-scrollbar { display: none; }
+      `}</style>
+    </div>
+  );
+}
+
 function Over() {
   const tijdlijn = [
     ['2006 — 2009', 'Begeleider bij Lijn5, jeugdzorg.', null],
@@ -37,6 +315,12 @@ function Over() {
       sub: 'Stede Broec · Enkhuizen · Drechterland',
       logo: (window.__resources && window.__resources.logoSed) || 'assets/logo-sed.png',
       maxHeight: 44,
+    },
+    {
+      name: 'VNG',
+      sub: 'Vereniging van Nederlandse Gemeenten',
+      logo: (window.__resources && window.__resources.logoVng) || 'assets/logo-vng.png',
+      maxHeight: 56,
     },
   ];
 
@@ -161,73 +445,8 @@ function Over() {
           Opdrachtgevers en samenwerkingspartners in de jeugdketen.
         </h2>
 
-        {/* Logo-grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          borderTop: '0.5px solid var(--line)',
-          borderLeft: '0.5px solid var(--line)',
-        }}>
-          {samenwerkingenMetLogo.map((org, i) => (
-            <div
-              key={i}
-              style={{
-                borderRight: '0.5px solid var(--line)',
-                borderBottom: '0.5px solid var(--line)',
-                padding: '32px 20px 20px',
-                minHeight: 168,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: 18,
-                background: 'var(--surface)',
-              }}
-              title={org.name}
-            >
-              <div style={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                minHeight: 80,
-              }}>
-                <img
-                  src={org.logo}
-                  alt={`Logo ${org.name}`}
-                  style={{
-                    maxHeight: org.maxHeight || 56,
-                    maxWidth: '100%',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    display: 'block',
-                  }}
-                />
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontFamily: 'DM Sans, sans-serif',
-                  fontSize: 12,
-                  fontWeight: 500,
-                  color: 'var(--fg1)',
-                  lineHeight: 1.4,
-                  letterSpacing: '0.01em',
-                }}>{org.name}</div>
-                {org.sub && (
-                  <div style={{
-                    fontFamily: 'DM Sans, sans-serif',
-                    fontSize: 11,
-                    color: 'var(--fg3)',
-                    lineHeight: 1.45,
-                    marginTop: 3,
-                  }}>{org.sub}</div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Logo-slider, interactief */}
+        <LogoSlider items={samenwerkingenMetLogo} />
 
         {/* Overige samenwerkingen, tekst */}
         <div style={{
