@@ -108,7 +108,20 @@ function Contact() {
             </div>
             <div style={{ marginBottom: 28, fontVariantNumeric: 'tabular-nums' }}>
               <a href="tel:+31627376003" style={{ color: 'var(--fg1)', textDecoration: 'none', borderBottom: '0.5px solid var(--line-strong)' }}>
-                06 — 27 37 60 03
+                06 - 27 37 60 03
+              </a>
+            </div>
+
+            <div style={eyebrowLabel}>Volg de praktijk</div>
+            <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
+              <a href="https://www.facebook.com/profile.php?id=61562826452913" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="facebook" size={16} strokeWidth={1.5} />
+              </a>
+              <a href="https://www.instagram.com/praktijkvanmarijk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="instagram" size={16} strokeWidth={1.5} />
+              </a>
+              <a href="https://www.linkedin.com/in/marijke-koomen-365096b1/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: '50%', border: '0.5px solid var(--line-strong)', color: 'var(--fg1)', textDecoration: 'none', transition: 'color 200ms, border-color 200ms, background 200ms' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--fg1)'; e.currentTarget.style.borderColor = 'var(--line-strong)'; }}>
+                <SocialIcon name="linkedin" size={16} strokeWidth={1.5} />
               </a>
             </div>
 
