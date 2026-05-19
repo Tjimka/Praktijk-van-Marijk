@@ -1,7 +1,7 @@
 function Over() {
   const tijdlijn = [
     ['2006 — 2009', 'Begeleider bij Lijn5, jeugdzorg.', null],
-    ['2009 — 2017', 'Jeugd- en Gezinsbeschermer, De Jeugd- en Gezinsbeschermers Noord-Holland.', 'Regie over complexe casuïstiek. Verantwoording aan kinderrechter en Raad voor de Kinderbescherming.'],
+    ['2009 — 2017', 'Jeugd- en Gezinsbeschermer, De Jeugd- en Gezinsbeschermers Noord-Holland.', 'Regie over complexe casuïstiek. Verantwoording afleggen aan kinderrechter en Raad voor de Kinderbescherming.'],
     ['2017', 'Jeugd- en Gezinscoach, Gemeente Alkmaar.', null],
     ['2018', 'Jeugddeskundige, Gemeente Heerhugowaard.', null],
     ['2018 — 2020', 'Medewerker Team Inzet, Gemeente Drechterland.', null],
@@ -51,13 +51,13 @@ function Over() {
         <div className="over-hero__text">
           <Eyebrow>Over Marijke</Eyebrow>
           <h1 style={{ fontFamily: 'Lora, serif', fontSize: 30, fontWeight: 500, color: 'var(--fg1)', lineHeight: 1.35, margin: '0 0 24px', textWrap: 'balance' }}>
-            Ik werk sinds 2006 met jeugdprofessionals, en richt me volledig op één vraag.
+            Twintig jaar lang stond ik zelf in de praktijk. Nu zet ik die kennis in voor jou.
           </h1>
           <p style={{ fontSize: 17, color: 'var(--fg2)', lineHeight: 1.7, margin: '0 0 28px' }}>
-            Hoe herken je intiem terreur en machtsdisbalans in een gezin, en hoe vertaal je dat naar taal die standhoudt in rapportage, raadkamer en zitting?
+            Hoe herken je intiem terreur en een machtsdisbalans in een gezin, hoe vertaal je dat naar feitelijke, onderbouwde taal en veiligheidsinterventies die standhouden in bijvoorbeeld een zitting en Raadkamer?
           </p>
           <p style={{ fontSize: 15, color: 'var(--fg2)', lineHeight: 1.75, margin: '0 0 16px' }}>
-            Mijn achtergrond is in de jeugdbescherming. Ik ken het werk van binnenuit: de caseload, het taalgebruik, de druk van een multidisciplinair overleg, en hoe een onderbuikgevoel in een dossier verdampt als je het niet feitelijk kunt onderbouwen.
+            Mijn achtergrond is in de jeugdbescherming. Ik ken het werk van binnenuit: de caseload, het taalgebruik, de druk van een multidisciplinair overleg en hoe een onderbuikgevoel in een dossier verdampt als je het niet feitelijk kunt onderbouwen.
           </p>
           <p style={{ fontSize: 15, color: 'var(--fg2)', lineHeight: 1.75, margin: 0 }}>
             Ik ben SKJ-geregistreerd en werk voor wijkteams, GI's en gemeentelijke jeugdzorginstellingen.
@@ -277,7 +277,7 @@ function Over() {
         </div>
         <div>
           <p style={{ fontSize: 16, color: 'var(--fg2)', lineHeight: 1.75, margin: 0, maxWidth: 620 }}>
-            HBO Pedagogiek (PsychoSociaal Werk). Post-HBO Gestalt Therapie (NSG Amsterdam). Aangevuld met specialisaties in juridische kaders, familierecht en dwingende controle (Stichting Het Verdwenen Zelf, 2025).
+            HBO Pedagogiek (PsychoSociaal Werk). Post-HBO Gestalt Therapie (NSG Amsterdam). Aangevuld met specialisaties o.a. in juridische kaders, familierecht en dwingende controle (Stichting Het Verdwenen Zelf, 2025).
           </p>
         </div>
       </div>

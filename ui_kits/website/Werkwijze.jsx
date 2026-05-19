@@ -10,13 +10,13 @@ function Werkwijze() {
       nr: '02',
       title: 'Training',
       duur: '3-6 dagdelen',
-      body: 'In een serie bijeenkomsten werken we aan herkenning van intiem terreur, risicotaxatie en feitelijke verslaglegging. Altijd met eigen casuïstiek van de deelnemers.',
+      body: 'In een serie bijeenkomsten werken we aan herkenning van intiem terreur, risicotaxatie en aan het schrijven van feitelijke verslaglegging. Altijd met eigen casuïstiek van de deelnemers.',
     },
     {
       nr: '03',
       title: 'Borging',
       duur: '3-6 maanden',
-      body: 'Mentorschap en intervisie om inzichten in dagelijks handelen te laten landen. Geen nazorg als formaliteit. Een werkende feedbackloop.',
+      body: 'Mentorschap en intervisie om inzichten in dagelijks handelen te laten landen. Geen nazorg als formaliteit. Wél met een werkende feedbackloop.',
     },
   ];
 
@@ -30,13 +30,13 @@ function Werkwijze() {
             Drie fasen. Geen afvinklijstje.
           </h1>
           <p style={{ fontSize: 17, color: 'var(--fg2)', lineHeight: 1.7, margin: '0 0 28px', maxWidth: '58ch' }}>
-            Ieder traject begint met een analyse, heeft een trainingscomponent, en sluit af met borging. De verhouding verschilt per organisatie. De volgorde staat vast.
+            Ieder traject begint met een analyse, heeft een trainingscomponent en sluit af met borging. De verhouding verschilt per organisatie. De volgorde staat vast.
           </p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'var(--fg2)', lineHeight: 1.75, margin: '0 0 16px', maxWidth: '60ch' }}>
-            Veel trainingen geven kennis mee. Die kennis zakt weg als de werkdruk terugkomt. Niet omdat professionals het niet willen vasthouden. Wel omdat kennis zonder oefening en terugkoppeling niet beklijft onder werkdruk.
+            Veel trainingen geven kennis mee. Die kennis zakt weg zodra jij in je werkdruk terugkomt. Niet omdat professionals het niet willen vasthouden. Wel omdat kennis zonder terugkerende oefening en terugkoppeling niet beklijft onder werkdruk. Weggegooid geld.
           </p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'var(--fg2)', lineHeight: 1.75, margin: '0 0 16px', maxWidth: '60ch' }}>
-            Daarom werkt elk traject in drie fasen. De analyse brengt in kaart wat er speelt in de specifieke context van het team. De training werkt met eigen casuïstiek, niet met bedachte voorbeelden. De borging zorgt dat inzichten landen in dagelijks handelen, niet alleen in de week na de training.
+            Daarom werkt elk traject in drie fasen. De analyse brengt in kaart wat er speelt in de specifieke context van het team én in de casuïstiek. De training werkt met eigen casuïstiek, niet met bedachte voorbeelden. De borging zorgt dat inzichten landen in dagelijks handelen, niet alleen in de week na de training.
           </p>
           <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 15, color: 'var(--fg2)', lineHeight: 1.75, margin: 0, maxWidth: '60ch' }}>
             Trajecten zijn op maat. De fasering staat vast, de invulling niet.
@@ -117,7 +117,7 @@ function Werkwijze() {
         </div>
         <div style={{ maxWidth: 640 }}>
           <p style={{ fontSize: 16, color: 'var(--fg2)', lineHeight: 1.8, margin: 0 }}>
-            Ik neem geen casussen over en doe geen crisiswerk. Ik werk niet met ouders, kinderen of cliënten. Mijn rol is de professional sterker maken in zijn eigen werk.
+            Ik neem geen casussen over en ik doe geen crisiswerk. Ik werk niet met ouders, kinderen of cliënten. Mijn rol is de professional sterker maken in zijn eigen werk.
           </p>
         </div>
       </div>

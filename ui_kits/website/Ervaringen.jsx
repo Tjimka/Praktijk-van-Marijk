@@ -250,7 +250,7 @@ function Ervaringen({ setRoute }) {
             lineHeight: 1.7,
             margin: '0 0 16px',
           }}>
-            Na een traject schrijven professionals concretere verslagen, herkennen ze machtsdynamiek ook als de dader functioneel overkomt, en nemen ze sneller een beslissing die ze kunnen onderbouwen. Niet omdat ze meer kennis hebben gekregen. Wel omdat ze die kennis hebben geoefend met eigen casuïstiek.
+            Na een traject schrijven professionals concretere, meer feitelijk onderbouwde verslagen, herkennen ze de machtsdynamiek in een gezin en gaan ze sneller over tot handelen op het vergroten van de veiligheid. Niet omdat ze meer kennis hebben gekregen. Wél omdat ze die kennis hebben geoefend met hun eigen casuïstiek.
           </p>
           <p style={{
             fontFamily: 'DM Sans, sans-serif',
@@ -313,8 +313,9 @@ function Ervaringen({ setRoute }) {
           Wil je weten of een training of traject past bij jouw team of organisatie?
         </p>
         <a
-          href="/contact"
-          onClick={(e) => { e.preventDefault(); setRoute && setRoute('contact'); }}
+          href="https://calendly.com/praktijkvanmarijk/25min"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: 'inline-block',
             background: 'var(--accent)',

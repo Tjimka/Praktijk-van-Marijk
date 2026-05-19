@@ -2,8 +2,26 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8"/>
-  <title>Praktijk van Marijk — website</title>
+  <title>Marijke Koomen | Specialist intiem terreur en jeugdbescherming | Praktijk van Marijk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- SEO -->
+  <meta name="description" content="Marijke Koomen is SKJ-geregistreerd jeugdprofessional en specialist in intiem terreur en complexe gezinssystemen. Ze traint en begeleidt professionals in jeugdzorg, jeugdbescherming en wijkteams."/>
+  <meta name="keywords" content="intiem terreur jeugdzorg, training jeugdprofessionals, complexe gezinssystemen, SKJ-geregistreerd, casuïstiekcoaching, risicotaxatie, Marijke Koomen"/>
+  <link rel="canonical" href="https://praktijkvanmarijk.nl/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Praktijk van Marijk | Specialist intiem terreur voor jeugdprofessionals"/>
+  <meta property="og:description" content="Marijke Koomen helpt jeugdprofessionals de onderstroom te vertalen naar taal. Van onderbuikgevoel naar onderbouwde verslaglegging."/>
+  <meta property="og:url" content="https://praktijkvanmarijk.nl/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://praktijkvanmarijk.nl/og-image.jpg"/>
+  <meta property="og:locale" content="nl_NL"/>
+
+  <!-- GEO -->
+  <meta name="language" content="nl-NL"/>
+  <meta name="geo.region" content="NL"/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
@@ -47,8 +65,55 @@
       }
     }
   </style>
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marijke Koomen",
+    "jobTitle": "SKJ-geregistreerd jeugdprofessional en specialist intiem terreur",
+    "url": "https://praktijkvanmarijk.nl",
+    "sameAs": [
+      "https://www.linkedin.com/in/marijke-koomen-365096b1/",
+      "https://www.facebook.com/profile.php?id=61562826452913",
+      "https://www.instagram.com/praktijkvanmarijk/"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Praktijk van Marijk",
+      "url": "https://praktijkvanmarijk.nl"
+    },
+    "knowsAbout": ["intiem terreur", "jeugdbescherming", "complexe gezinssystemen", "risicotaxatie", "jeugdzorg"]
+  }
+  </script>
+
+  <!-- Structured data: ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Praktijk van Marijk",
+    "url": "https://praktijkvanmarijk.nl",
+    "description": "Specialist in intiem terreur, complexe gezinssystemen en training voor jeugdprofessionals.",
+    "serviceType": ["Groepstraining", "Casuïstiekcoaching", "Teamintervisie", "Mentorschap"],
+    "areaServed": "Nederland",
+    "knowsAbout": ["intiem terreur", "SKJ-registratie", "jeugdbescherming", "wijkteams"],
+    "founder": {
+      "@type": "Person",
+      "name": "Marijke Koomen"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- Netlify form detectie -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="naam" />
+    <input type="email" name="email" />
+    <textarea name="bericht"></textarea>
+    <button type="submit">Verstuur</button>
+  </form>
   <template id="__bundler_thumbnail" data-bg-color="#faf8f4">
     <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
       <rect width="1200" height="800" fill="#faf8f4"></rect>

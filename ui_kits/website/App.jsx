@@ -2,9 +2,30 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "skjPlacement": "bottom-aligned"
 }/*EDITMODE-END*/;
 
+const ROUTES = ['home', 'over', 'professionals', 'werkwijze', 'ervaringen', 'contact'];
+
+function readHashRoute() {
+  const h = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+  return ROUTES.includes(h) ? h : 'home';
+}
+
 function App() {
-  const [route, setRoute] = React.useState('home');
+  const [route, _setRoute] = React.useState(readHashRoute);
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  const setRoute = React.useCallback((r) => {
+    _setRoute(r);
+    if (ROUTES.includes(r)) {
+      try { history.replaceState(null, '', '#' + r); } catch (_) {}
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
+    const onHash = () => _setRoute(readHashRoute());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   const page = {
     home: <Home setRoute={setRoute} />,
@@ -14,7 +35,7 @@ function App() {
     ervaringen: <Ervaringen setRoute={setRoute} />,
     contact: <Contact />,
   }[route];
-  const label = { home: '01 Home', over: '02 Over Marijke', professionals: '03 Voor professionals', werkwijze: '04 Werkwijze', ervaringen: '05 Ervaringen', contact: '06 Contact' }[route];
+  const label = { home: '01 Home', over: '02 Over Marijke', professionals: '03 Training jeugdprofessionals', werkwijze: '04 Werkwijze en aanpak', ervaringen: '05 Ervaringen jeugdzorg', contact: '06 Contact' }[route];
 
   return (
     <div data-screen-label={label} style={{ minHeight: '100vh', background: 'var(--bg)' }}>

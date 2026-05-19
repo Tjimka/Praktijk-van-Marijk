@@ -18,7 +18,7 @@ function SectionDivider() {
   return <div style={{ height: '0.5px', background: 'var(--line)', margin: '0 48px' }} />;
 }
 
-function Button({ children, variant = 'primary', onClick, href, type }) {
+function Button({ children, variant = 'primary', onClick, href, type, target, rel }) {
   const base = {
     display: 'inline-flex',
     alignItems: 'center',
@@ -41,7 +41,10 @@ function Button({ children, variant = 'primary', onClick, href, type }) {
     tertiary:  { ...base, background: 'transparent',   color: 'var(--accent)',         border: '1px solid transparent', padding: '10px 0', textDecoration: 'underline', textUnderlineOffset: '4px' },
   };
   const props = { style: styles[variant], onClick, type };
-  if (href) return <a href={href} {...props}>{children}</a>;
+  if (href) {
+    const safeRel = target === '_blank' ? (rel || 'noopener noreferrer') : rel;
+    return <a href={href} target={target} rel={safeRel} {...props}>{children}</a>;
+  }
   return <button {...props}>{children}</button>;
 }
 
@@ -74,4 +77,45 @@ function Icon({ name, size = 18, color, strokeWidth = 1.5 }) {
   return <span ref={ref} style={{ display: 'inline-flex', color: color || 'currentColor', width: size, height: size }} />;
 }
 
-Object.assign(window, { Eyebrow, SectionDivider, Button, Card, Icon });
+function SocialIcon({ name, size = 16, strokeWidth = 1.5 }) {
+  // Brand glyphs in line-style om aan te sluiten op de Lucide-iconen elders.
+  const common = {
+    width: size,
+    height: size,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+  };
+  if (name === 'facebook') {
+    return (
+      <svg {...common}>
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      </svg>
+    );
+  }
+  if (name === 'instagram') {
+    return (
+      <svg {...common}>
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+        <path d="M16 11.37a4 4 0 1 1-4.74-4.74A4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </svg>
+    );
+  }
+  if (name === 'linkedin') {
+    return (
+      <svg {...common}>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    );
+  }
+  return null;
+}
+
+Object.assign(window, { Eyebrow, SectionDivider, Button, Card, Icon, SocialIcon });
