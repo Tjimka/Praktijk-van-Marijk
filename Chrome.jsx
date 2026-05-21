@@ -104,38 +104,43 @@ function Topbar({ route, setRoute }) {
         </svg>
       </button>
 
-      {/* Mobile drawer + backdrop */}
-      {drawerOpen && (
-        <React.Fragment>
-          <div className="pvm-mobile-drawer-backdrop" onClick={() => setDrawerOpen(false)} aria-hidden="true" />
-          <nav className="pvm-mobile-drawer" aria-label="Hoofdmenu" role="dialog" aria-modal="true">
-            <button
-              type="button"
-              className="pvm-mobile-drawer__close"
-              aria-label="Menu sluiten"
-              onClick={() => setDrawerOpen(false)}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-              </svg>
-            </button>
-            <ul className="pvm-mobile-drawer__nav">
-              {items.map(([key, label, title]) => (
-                <li key={key}>
-                  <a
-                    onClick={() => go(key)}
-                    title={title}
-                    aria-label={title}
-                    className={route === key ? 'is-active' : ''}
-                  >{label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </React.Fragment>
-      )}
-    </div>
+     {/* Mobile drawer + backdrop */}
+<div
+  className={`pvm-mobile-overlay${drawerOpen ? ' is-open' : ''}`}
+  onClick={() => setDrawerOpen(false)}
+  aria-hidden="true"
+/>
+<nav
+  className={`pvm-mobile-nav${drawerOpen ? ' is-open' : ''}`}
+  aria-label="Hoofdmenu"
+  role="dialog"
+  aria-modal="true"
+>
+  <button
+    type="button"
+    className="pvm-mobile-nav__close"
+    aria-label="Menu sluiten"
+    onClick={() => setDrawerOpen(false)}
+  >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+    </svg>
+  </button>
+  <ul className="pvm-mobile-nav__nav">
+    {items.map(([key, label, title]) => (
+      <li key={key}>
+        
+          onClick={() => go(key)}
+          title={title}
+          aria-label={title}
+          className={route === key ? 'is-active' : ''}
+        >{label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+</div>
   );
 }
 
