@@ -132,10 +132,10 @@ function Topbar({ route, setRoute }) {
       <li key={key}>
         
           onClick={() => go(key)}
-          title={title}
-          aria-label={title}
-          className={route === key ? 'is-active' : ''}
-        >{label}</a>
+        title={title}
+        aria-label={title}
+        className={route === key ? 'is-active' : ''}
+      >{label}</a>
       </li>
     ))}
   </ul>
