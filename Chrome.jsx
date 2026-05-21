@@ -65,7 +65,7 @@ function Topbar({ route, setRoute }) {
       </a>
 
       {/* Desktop nav */}
-      <ul className="pvm-topbar__nav" style={{ gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
+      <nav className="pvm-topbar__nav"><ul> style={{ gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
         {items.map(([key, label, title]) => (
           <li key={key}>
             <a
