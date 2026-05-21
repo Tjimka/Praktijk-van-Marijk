@@ -127,7 +127,7 @@ function Topbar({ route, setRoute }) {
                     onClick={() => go(key)}
                     title={title}
                     aria-label={title}
-                    className={`pvm-mobile-nav__link${route === key ? ' is-active' : ''}
+                    className={`pvm-mobile-nav__link${route === key ? ' is-active' : ''}`}
                   >{label}</a>
                 </li>
               ))}
