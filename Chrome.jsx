@@ -45,16 +45,16 @@ function Topbar({ route, setRoute }) {
         <img
           src={(window.__resources && window.__resources.logoPraktijk) || "assets/logo-praktijk-van-marijk.png"}
           alt="Praktijk van Marijk"
-          className="pvm-topbar-logo"
+          className="pvm-topbar__logo"
           style={{ height: 64, width: 'auto', display: 'block' }}
         />
-        <span className="pvm-topbar-divider" style={{
+        <span className="pvm-topbar__sep" style={{
           display: 'inline-block',
           width: 1,
           height: 28,
           background: 'var(--line)',
         }}></span>
-        <span className="pvm-topbar-tagline" style={{
+        <span className="pvm-topbar__tagline" style={{
           fontFamily: 'DM Sans, sans-serif',
           fontWeight: 500,
           color: 'var(--accent)',
@@ -65,28 +65,20 @@ function Topbar({ route, setRoute }) {
       </a>
 
       {/* Desktop nav */}
-      <nav className="pvm-topbar__nav"><ul> style={{ gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
-        {items.map(([key, label, title]) => (
-          <li key={key}>
-            <a
-              onClick={() => setRoute(key)}
-              title={title}
-              aria-label={title}
-              style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: 13,
-                color: route === key ? 'var(--accent)' : 'var(--fg2)',
-                textDecoration: 'none',
-                borderBottom: route === key ? '1.5px solid var(--accent)' : '1.5px solid transparent',
-                paddingBottom: 2,
-                letterSpacing: '0.02em',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-              }}
-            >{label}</a>
-          </li>
-        ))}
-      </ul>
+      <nav className="pvm-topbar__nav" aria-label="Hoofdnavigatie">
+        <ul style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
+          {items.map(([key, label, title]) => (
+            <li key={key}>
+              <a
+                onClick={() => setRoute(key)}
+                title={title}
+                aria-label={title}
+                className={`pvm-topbar__link${route === key ? ' is-active' : ''}`}
+              >{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Mobile hamburger */}
       <button
@@ -95,7 +87,6 @@ function Topbar({ route, setRoute }) {
         aria-label="Menu openen"
         aria-expanded={drawerOpen}
         onClick={() => setDrawerOpen(true)}
-        
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
           <line x1="4" y1="7" x2="20" y2="7"></line>
@@ -120,7 +111,7 @@ function Topbar({ route, setRoute }) {
                 <line x1="18" y1="6" x2="6" y2="18"></line>
               </svg>
             </button>
-            <ul className="pvm-mobile-nav">
+            <ul>
               {items.map(([key, label, title]) => (
                 <li key={key}>
                   <a
