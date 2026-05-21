@@ -90,7 +90,7 @@ function Topbar({ route, setRoute }) {
 
       {/* Mobile hamburger */}
       <button
-        className="pvm-hamburger"
+        className="pvm-topbar__hamburger"
         type="button"
         aria-label="Menu openen"
         aria-expanded={drawerOpen}
