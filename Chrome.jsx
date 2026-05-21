@@ -127,20 +127,20 @@ function Topbar({ route, setRoute }) {
       <line x1="18" y1="6" x2="6" y2="18"></line>
     </svg>
   </button>
-  <ul className="pvm-mobile-nav__nav">
-    {items.map(([key, label, title]) => (
-      <li key={key}>
-        
-          onClick={() => go(key)}
+<ul className="pvm-mobile-nav__nav">
+  {items.map(([key, label, title]) => (
+    <li key={key}>
+      <button
+        onClick={() => go(key)}
         title={title}
         aria-label={title}
         className={route === key ? 'is-active' : ''}
-      >{label}</a>
-      </li>
-    ))}
-  </ul>
-</nav>
-</div>
+      >
+        {label}
+      </button>
+    </li>
+  ))}
+</ul>
   );
 }
 
