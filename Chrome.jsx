@@ -65,7 +65,7 @@ function Topbar({ route, setRoute }) {
       </a>
 
       {/* Desktop nav */}
-      <ul className="pvm-topbar__nav" style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
+      <ul className="pvm-topbar__nav" style={{ gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
         {items.map(([key, label, title]) => (
           <li key={key}>
             <a
@@ -95,7 +95,7 @@ function Topbar({ route, setRoute }) {
         aria-label="Menu openen"
         aria-expanded={drawerOpen}
         onClick={() => setDrawerOpen(true)}
-        style={{ display: 'none' }}
+        
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
           <line x1="4" y1="7" x2="20" y2="7"></line>
