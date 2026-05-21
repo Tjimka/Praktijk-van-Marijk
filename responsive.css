@@ -154,6 +154,23 @@ img, svg, video { max-width: 100%; height: auto; }
 .pvm-mobile-nav__link.is-active { color: var(--accent); }
 .pvm-mobile-nav__link:hover { color: var(--accent); }
 
+.pvm-mobile-nav__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  appearance: none;
+  background: transparent;
+  border: 0.5px solid var(--line-strong);
+  border-radius: 6px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--fg1);
+}
+
 .pvm-mobile-nav__foot {
   margin-top: auto;
   padding-top: 28px;
