@@ -120,7 +120,7 @@ function Topbar({ route, setRoute }) {
                 <line x1="18" y1="6" x2="6" y2="18"></line>
               </svg>
             </button>
-            <ul className="pvm-mobile-nav__nav">
+            <ul className="pvm-mobile-nav">
               {items.map(([key, label, title]) => (
                 <li key={key}>
                   <a
