@@ -65,7 +65,7 @@ function Topbar({ route, setRoute }) {
       </a>
 
       {/* Desktop nav */}
-      <ul className="pvm-nav" style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
+      <ul className="pvm-topbar__nav" style={{ display: 'flex', gap: 22, listStyle: 'none', margin: 0, padding: 0 }}>
         {items.map(([key, label, title]) => (
           <li key={key}>
             <a
@@ -90,7 +90,7 @@ function Topbar({ route, setRoute }) {
 
       {/* Mobile hamburger */}
       <button
-        className="pvm-hamburger"
+        className="pvm-topbar__hamburger"
         type="button"
         aria-label="Menu openen"
         aria-expanded={drawerOpen}
@@ -107,11 +107,11 @@ function Topbar({ route, setRoute }) {
       {/* Mobile drawer + backdrop */}
       {drawerOpen && (
         <React.Fragment>
-          <div className="pvm-mobile-drawer-backdrop" onClick={() => setDrawerOpen(false)} aria-hidden="true" />
-          <nav className="pvm-mobile-drawer" aria-label="Hoofdmenu" role="dialog" aria-modal="true">
+          <div className="pvm-mobile-overlay" onClick={() => setDrawerOpen(false)} aria-hidden="true" />
+          <nav className="pvm-mobile-nav" aria-label="Hoofdmenu" role="dialog" aria-modal="true">
             <button
               type="button"
-              className="pvm-mobile-drawer__close"
+              className="pvm-mobile-nav__close"
               aria-label="Menu sluiten"
               onClick={() => setDrawerOpen(false)}
             >
@@ -120,14 +120,14 @@ function Topbar({ route, setRoute }) {
                 <line x1="18" y1="6" x2="6" y2="18"></line>
               </svg>
             </button>
-            <ul className="pvm-mobile-drawer__nav">
+            <ul className="pvm-mobile-nav__nav">
               {items.map(([key, label, title]) => (
                 <li key={key}>
                   <a
                     onClick={() => go(key)}
                     title={title}
                     aria-label={title}
-                    className={route === key ? 'is-active' : ''}
+                    className={`pvm-mobile-nav__link${route === key ? ' is-active' : ''}
                   >{label}</a>
                 </li>
               ))}
