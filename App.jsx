@@ -62,6 +62,7 @@ function App() {
       <Topbar route={route} setRoute={setRoute} />
       {page}
       <Footer setRoute={setRoute} />
+      <CookieBanner onNavigate={setRoute} />
 
       <TweaksPanel>
         <TweakSection label="Voor professionals, SKJ-strip" />
