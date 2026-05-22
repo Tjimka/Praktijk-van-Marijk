@@ -98,8 +98,8 @@ function Topbar({ route, setRoute }) {
       {/* Mobile drawer + backdrop */}
       {drawerOpen && (
         <React.Fragment>
-          <div className="pvm-mobile-overlay" onClick={() => setDrawerOpen(false)} aria-hidden="true" />
-          <nav className="pvm-mobile-nav" aria-label="Hoofdmenu" role="dialog" aria-modal="true">
+          <div className={`pvm-mobile-overlay${drawerOpen ? ' is-open' : ''}`} onClick={() => setDrawerOpen(false)} aria-hidden="true" />
+<nav className={`pvm-mobile-nav${drawerOpen ? ' is-open' : ''}`} aria-label="Hoofdmenu" role="dialog" aria-modal="true">
             <button
               type="button"
               className="pvm-mobile-nav__close"
