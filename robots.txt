@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /index.standalone.html
+
+Sitemap: https://www.praktijkvanmarijk.nl/sitemap.xml
